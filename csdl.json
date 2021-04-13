@@ -1,0 +1,101 @@
+{
+    "$Version": "4.01",
+    "OData.PetStore": {
+        "orderStatus": {
+            "$Kind": "EnumType",
+            "$IsFlags": false,
+            "$UnderlyingType": "Edm.Int32",
+            "placed": "0",
+            "approved": "1",
+            "delivered": "2"
+        },
+        "petStatus": {
+            "$Kind": "EnumType",
+            "$IsFlags": false,
+            "$UnderlyingType": "Edm.Int32",
+            "Available": "0",
+            "Pending": "1",
+            "Sold": "2"
+        },
+        "Pet": {
+            "$Kind": "EntityType",
+            "$Key": [
+                "id"
+            ],
+            "id": {
+                "$Type": "Edm.Int32"
+            },
+            "name": {
+                "$Type": "Edm.String"
+            },
+            "category": {
+                "$Type": "OData.PetStore.category"
+            },
+            "photoUrls": {
+                "$Type": "Edm.String",
+                "$Collection": true
+            },
+            "tags": {
+                "$Type": "OData.PetStore.tags",
+                "$Collection": true
+            },
+            "status": {
+                "$Type": "OData.PetStore.petStatus"
+            }
+        },
+        "Order": {
+            "$Kind": "EntityType",
+            "$Key": [
+                "id"
+            ],
+            "id": {
+                "$Type": "Edm.Int64"
+            },
+            "petId": {
+                "$Type": "Edm.Int64"
+            },
+            "quantity": {
+                "$Type": "Edm.Int32"
+            },
+            "shipDate": {
+                "$Type": "Edm.DateTimeOffset"
+            },
+            "status": {
+                "$Type": "OData.PetStore.orderStatus"
+            },
+            "complete": {
+                "$Type": "Edm.Boolean"
+            }
+        },
+        "Category": {
+            "$Kind": "ComplexType",
+            "id": {
+                "$Type": "Edm.Int32"
+            },
+            "name": {
+                "$Type": "Edm.String"
+            }
+        },
+        "Tags": {
+            "$Kind": "ComplexType",
+            "id": {
+                "$Type": "Edm.Int32"
+            },
+            "name": {
+                "$Type": "Edm.String"
+            }
+        },
+        "Container": {
+            "$Kind": "EntityContainer",
+            "Pets": {
+                "$Kind": "EntitySet",
+                "$Type": "OData.PetStore.Pet"
+            },
+            "Orders": {
+                "$Kind": "EntitySet",
+                "$Type": "OData.PetStore.Order"
+            }
+        }
+    }
+}
+
