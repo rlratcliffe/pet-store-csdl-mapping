@@ -1,13 +1,172 @@
 {
     "$Version": "4.01",
     "OData.PetStore": {
+        "Order": {
+            "$Kind": "EntityType",
+            "$Key": [
+                "id"
+            ],
+            "id": {
+                "$Type": "Edm.Int64",
+                "$Nullable": "False"
+            },
+            "petId": {
+                "$Type": "Edm.Int64",
+                "$Nullable": "False"
+            },
+            "customerId": {
+                "$Type": "Edm.Int64",
+                "$Nullable": "False"
+            },           
+            "quantity": {
+                "$Type": "Edm.Int32",
+                "$Nullable": "False"
+            },
+            "shipDate": {
+                "$Type": "Edm.DateTimeOffset"
+            },
+            "status": {
+                "$Type": "OData.PetStore.orderStatus"
+            },
+            "price": {
+                "$Type": "Edm.Double",
+                "$Nullable": "False"
+            }
+            
+        },
+        "Customer": {
+            "$Kind": "EntityType",
+            "$Key": [
+                "id"
+            ],
+            "id": {
+                "$Type": "Edm.Int64",
+                "$Nullable": "False"
+            },
+            "firstName": {
+                "$Type": "Edm.String",
+                "$Nullable": "False",
+                "$MaxLength": "255"
+            },
+            "lastName": {
+                "$Type": "Edm.String",
+                "$Nullable": "False",
+                "$MaxLength": "255"
+            },           
+            "address": {
+                "$Type": "OData.PetStore.Address",
+                "$Nullable":"false",
+                "$Collection": true
+            } 
+        },
+        "Address": {
+            "$Kind": "ComplexType",
+            "street": {
+                "$Type": "Edm.String",
+                "$Nullable":"false",
+                "$MaxLength": "255"
+            },
+            "city": {
+                "$Type": "Edm.String",
+                "$Nullable":"false",
+                "$MaxLength": "255"
+            },
+            "state": {
+                "$Type": "Edm.String",
+                "$Nullable":"false",
+                "$MaxLength": "255"
+            },
+            "zip": {
+                "$Type": "Edm.String",
+                "$Nullable":"false",
+                "$MaxLength": "255"
+            }
+        },
+        "Category": {
+            "$Kind": "EntityType",
+            "$Key": [
+                "id"
+            ],
+            "id": {
+                "$Type": "Edm.Int64",
+                "$Nullable": "False"
+            },
+            "name": {
+                "$Type": "Edm.String",
+                "$Nullable":"false",
+                "$MaxLength": "255"
+            }
+        },
+        "Tag": {
+            "$Kind": "EntityType",
+            "$Key": [
+                "id"
+            ],
+            "id": {
+                "$Type": "Edm.Int64",
+                "$Nullable": "False"
+            },
+            "name": {
+                "$Type": "Edm.String",
+                "$Nullable":"false",
+                "$MaxLength": "255"
+            }
+        },
+        "Inventory": {
+            "$Kind": "ComplexType",
+            "animal": {
+                "$Type": "Edm.String",
+                "$Nullable":"false",
+                "$MaxLength": "255"
+            },
+            "quantity": {
+                "$Type": "Edm.Int64",
+                "$Nullable":"false"
+            }
+        },
+        "Pet": {
+            "$Kind": "EntityType",
+            "$Key": [
+                "id"
+            ],
+            "id": {
+                "$Type": "Edm.Int64",
+                "$Nullable": "False"
+            },
+            "name": {
+                "$Type": "Edm.String",
+                "$Nullable": "False",
+                "$MaxLength":"255"
+            },
+            "category": {
+                "$Type": "OData.PetStore.category",
+                "$Nullable": "False"
+            },
+            "photoUrls": {
+                "$Type": "Edm.String",
+                "$Collection": true,
+                "$Nullable": "False",
+                "$MaxLength":"255"
+            },
+            "tags": {
+                "$Type": "OData.PetStore.tags",
+                "$Collection": true,
+                "$Nullable": "False"
+            },
+            "status": {
+                "$Type": "OData.PetStore.petStatus",
+                "$Nullable": "False"
+            }
+        },
         "orderStatus": {
             "$Kind": "EnumType",
             "$IsFlags": false,
             "$UnderlyingType": "Edm.Int32",
             "placed": "0",
             "approved": "1",
-            "delivered": "2"
+            "delivered": "2",
+            "completed": "3",
+            "$Nullable": "False"
         },
         "petStatus": {
             "$Kind": "EnumType",
@@ -16,74 +175,6 @@
             "Available": "0",
             "Pending": "1",
             "Sold": "2"
-        },
-        "Pet": {
-            "$Kind": "EntityType",
-            "$Key": [
-                "id"
-            ],
-            "id": {
-                "$Type": "Edm.Int32"
-            },
-            "name": {
-                "$Type": "Edm.String"
-            },
-            "category": {
-                "$Type": "OData.PetStore.category"
-            },
-            "photoUrls": {
-                "$Type": "Edm.String",
-                "$Collection": true
-            },
-            "tags": {
-                "$Type": "OData.PetStore.tags",
-                "$Collection": true
-            },
-            "status": {
-                "$Type": "OData.PetStore.petStatus"
-            }
-        },
-        "Order": {
-            "$Kind": "EntityType",
-            "$Key": [
-                "id"
-            ],
-            "id": {
-                "$Type": "Edm.Int64"
-            },
-            "petId": {
-                "$Type": "Edm.Int64"
-            },
-            "quantity": {
-                "$Type": "Edm.Int32"
-            },
-            "shipDate": {
-                "$Type": "Edm.DateTimeOffset"
-            },
-            "status": {
-                "$Type": "OData.PetStore.orderStatus"
-            },
-            "complete": {
-                "$Type": "Edm.Boolean"
-            }
-        },
-        "Category": {
-            "$Kind": "ComplexType",
-            "id": {
-                "$Type": "Edm.Int32"
-            },
-            "name": {
-                "$Type": "Edm.String"
-            }
-        },
-        "Tags": {
-            "$Kind": "ComplexType",
-            "id": {
-                "$Type": "Edm.Int32"
-            },
-            "name": {
-                "$Type": "Edm.String"
-            }
         },
         "Container": {
             "$Kind": "EntityContainer",
@@ -94,6 +185,22 @@
             "Orders": {
                 "$Kind": "EntitySet",
                 "$Type": "OData.PetStore.Order"
+            },
+            "Customers": {
+                "$Kind": "EntitySet",
+                "$Type": "OData.PetStore.Customer"
+            },
+            "Inventory": {
+                "$Kind": "EntitySet",
+                "$Type": "OData.PetStore.Inventory"
+            },
+            "Tag": {
+                "$Kind": "EntitySet",
+                "$Type": "OData.PetStore.Tag"
+            },
+            "Category": {
+                "$Kind": "EntitySet",
+                "$Type": "OData.PetStore.Category"
             }
         }
     }
