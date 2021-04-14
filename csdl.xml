@@ -12,12 +12,6 @@
                 <Property Name="ShipDate" Type="Edm.DateTimeOffset" Nullable="false"/>
                 <Property Name="Price" Type="Edm.Double"/>
                 <Property Name="Status" Type="OData.PetStore.OrderStatus"/>
-                <!-- <NavigationProperty Name="Pet" Type="OData.PetStore.Pet">
-                    <ReferentialConstraint Property="PetId" ReferencedProperty="Id"/>
-                </NavigationProperty>
-                <NavigationProperty Name="Customer" Type="OData.PetStore.Customer">
-                    <ReferentialConstraint Property="CustomerId" ReferencedProperty="Id"/>
-                </NavigationProperty> -->
             </EntityType>
             <EntityType Name="Customer">
               <Key>
@@ -40,9 +34,6 @@
             </Key>
             <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255"/>
             <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
-            <!-- <NavigationProperty Name="Pets" Type="Collection(OData.PetStore.Pet)" Partner="PetCategory">
-                <ReferentialConstraint Property="CategoryId" ReferencedProperty="CategoryId"/>
-            </NavigationProperty> -->
         </EntityType>
           <EntityType Name="Tag">
               <Key>
@@ -65,10 +56,6 @@
             <Property Name="Tags" Type="Collection(OData.PetStore.Tag)" Nullable="false"/>
             <Property Name="PhotoUrls" Type="Collection(OData.PetStore.String)" Nullable="false" MaxLength="255"/>
             <Property Name="PetStatus" Type="OData.PetStore.PetStatus" Nullable="false"/>
-            <!-- <NavigationProperty Name="PetTags" Type="Collection(OData.PetStore.Tag)"/>
-            <NavigationProperty Name="PetCategory" Type="OData.PetStore.Category" Partner="Pets">
-                <ReferentialConstraint Property="CategoryId" ReferencedProperty="CategoryId"/>
-            </NavigationProperty> -->
         </EntityType>
             <EnumType Name="OrderStatus" IsFlags="false" UnderlyingType="Edm.Int32">
                 <Member Name="placed" Value="0"/>
@@ -84,16 +71,11 @@
 
             <EntityContainer Name="OData.PetStoreContainer">
                 <EntitySet Name="Orders" EntityType="OData.PetStore.Order">
-                    <!-- <NavigationPropertyBinding Path="Customer" Target="Customers"/>
-                    <NavigationPropertyBinding Path="Pet" Target="Pets"/> -->
                 </EntitySet>
                 <EntitySet Name="Pets" EntityType="OData.PetStore.Pet">
-                    <!-- <NavigationPropertyBinding Path="PetCategory" Target="Categories"/>
-                    <NavigationPropertyBinding Path="PetTags" Target="Tags"/> -->
                 </EntitySet>
                 <EntitySet Name="Customers" EntityType="OData.PetStore.Customer"/>
                 <EntitySet Name="Categories" EntityType="OData.PetStore.Category">
-                    <!-- <NavigationPropertyBinding Path="Pets" Target="Pets"/> -->
                 </EntitySet>
                 <EntitySet Name="Tags" EntityType="OData.PetStore.Tag"/>
             </EntityContainer>
