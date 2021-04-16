@@ -1,6 +1,7 @@
 {
     "$Version": "4.01",
-    "OData.PetStore": {
+    "$EntityContainer": "OData.Container",
+    "OData": {
         "Order": {
             "$Kind": "EntityType",
             "$Key": [
