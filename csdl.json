@@ -2,6 +2,40 @@
     "$Version": "4.01",
     "$EntityContainer": "OData.PetStore.Container",
     "OData.PetStore": {
+        "Pet": {
+            "$Kind": "EntityType",
+            "$Key": [
+                "id"
+            ],
+            "id": {
+                "$Type": "Edm.Int64",
+                "$Nullable": false
+            },
+            "name": {
+                "$Type": "Edm.String",
+                "$Nullable": false,
+                "$MaxLength":255
+            },
+            "category": {
+                "$Type": "OData.PetStore.Category",
+                "$Nullable": false
+            },
+            "photoUrls": {
+                "$Type": "Edm.String",
+                "$Collection": true,
+                "$Nullable": false,
+                "$MaxLength":255
+            },
+            "tags": {
+                "$Type": "OData.PetStore.Tag",
+                "$Collection": true,
+                "$Nullable": false
+            },
+            "status": {
+                "$Type": "OData.PetStore.petStatus",
+                "$Nullable": false
+            }
+        },
         "Order": {
             "$Kind": "EntityType",
             "$Key": [
@@ -9,19 +43,19 @@
             ],
             "id": {
                 "$Type": "Edm.Int64",
-                "$Nullable": "False"
+                "$Nullable": false
             },
             "petId": {
                 "$Type": "Edm.Int64",
-                "$Nullable": "False"
+                "$Nullable": false
             },
             "customerId": {
                 "$Type": "Edm.Int64",
-                "$Nullable": "False"
+                "$Nullable": false
             },           
             "quantity": {
                 "$Type": "Edm.Int32",
-                "$Nullable": "False"
+                "$Nullable": false
             },
             "shipDate": {
                 "$Type": "Edm.DateTimeOffset"
@@ -31,7 +65,7 @@
             },
             "price": {
                 "$Type": "Edm.Double",
-                "$Nullable": "False"
+                "$Nullable": false
             }
             
         },
@@ -42,21 +76,21 @@
             ],
             "id": {
                 "$Type": "Edm.Int64",
-                "$Nullable": "False"
+                "$Nullable": false
             },
             "firstName": {
                 "$Type": "Edm.String",
-                "$Nullable": "False",
+                "$Nullable": false,
                 "$MaxLength": 255
             },
             "lastName": {
                 "$Type": "Edm.String",
-                "$Nullable": "False",
+                "$Nullable": false,
                 "$MaxLength": 255
             },           
             "address": {
                 "$Type": "OData.PetStore.Address",
-                "$Nullable":"false",
+                "$Nullable": false,
                 "$Collection": true
             } 
         },
@@ -64,22 +98,22 @@
             "$Kind": "ComplexType",
             "street": {
                 "$Type": "Edm.String",
-                "$Nullable":"false",
+                "$Nullable":false,
                 "$MaxLength": 255
             },
             "city": {
                 "$Type": "Edm.String",
-                "$Nullable":"false",
+                "$Nullable":false,
                 "$MaxLength": 255
             },
             "state": {
                 "$Type": "Edm.String",
-                "$Nullable":"false",
+                "$Nullable":false,
                 "$MaxLength": 255
             },
             "zip": {
                 "$Type": "Edm.String",
-                "$Nullable":"false",
+                "$Nullable":false,
                 "$MaxLength": 255
             }
         },
@@ -90,11 +124,11 @@
             ],
             "id": {
                 "$Type": "Edm.Int64",
-                "$Nullable": "False"
+                "$Nullable": false
             },
             "name": {
                 "$Type": "Edm.String",
-                "$Nullable":"false",
+                "$Nullable":false,
                 "$MaxLength": 255
             }
         },
@@ -105,11 +139,11 @@
             ],
             "id": {
                 "$Type": "Edm.Int64",
-                "$Nullable": "False"
+                "$Nullable": false
             },
             "name": {
                 "$Type": "Edm.String",
-                "$Nullable":"false",
+                "$Nullable":false,
                 "$MaxLength": 255
             }
         },
@@ -117,46 +151,12 @@
             "$Kind": "ComplexType",
             "animal": {
                 "$Type": "Edm.String",
-                "$Nullable":"false",
+                "$Nullable":false,
                 "$MaxLength": 255
             },
             "quantity": {
                 "$Type": "Edm.Int64",
-                "$Nullable":"false"
-            }
-        },
-        "Pet": {
-            "$Kind": "EntityType",
-            "$Key": [
-                "id"
-            ],
-            "id": {
-                "$Type": "Edm.Int64",
-                "$Nullable": "False"
-            },
-            "name": {
-                "$Type": "Edm.String",
-                "$Nullable": "False",
-                "$MaxLength":255
-            },
-            "category": {
-                "$Type": "OData.PetStore.Category",
-                "$Nullable": "False"
-            },
-            "photoUrls": {
-                "$Type": "Edm.String",
-                "$Collection": true,
-                "$Nullable": "False",
-                "$MaxLength":255
-            },
-            "tags": {
-                "$Type": "OData.PetStore.Tag",
-                "$Collection": true,
-                "$Nullable": "False"
-            },
-            "status": {
-                "$Type": "OData.PetStore.petStatus",
-                "$Nullable": "False"
+                "$Nullable":false
             }
         },
         "orderStatus": {
