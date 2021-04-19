@@ -69,11 +69,13 @@
         <Member Name="sold" Value="2" />
       </EnumType>
       <EntityContainer Name="Container">
-        <EntitySet Name="Orders" EntityType="OData.PetStore.Order" />
         <EntitySet Name="Pets" EntityType="OData.PetStore.Pet" />
+        <EntitySet Name="Orders" EntityType="OData.PetStore.Order" />
         <EntitySet Name="Customers" EntityType="OData.PetStore.Customer" />
-        <EntitySet Name="Categorys" EntityType="OData.PetStore.Category" />
         <EntitySet Name="Tags" EntityType="OData.PetStore.Tag" />
+        <EntitySet Name="Categories" EntityType="OData.PetStore.Category" />
+        <EntitySet Name="Inventory" EntityType="OData.PetStore.Inventory"/>
+
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

@@ -1,7 +1,7 @@
 {
     "$Version": "4.01",
-    "$EntityContainer": "OData.Container",
-    "OData": {
+    "$EntityContainer": "OData.PetStore.Container",
+    "OData.PetStore": {
         "Order": {
             "$Kind": "EntityType",
             "$Key": [
@@ -47,12 +47,12 @@
             "firstName": {
                 "$Type": "Edm.String",
                 "$Nullable": "False",
-                "$MaxLength": "255"
+                "$MaxLength": 255
             },
             "lastName": {
                 "$Type": "Edm.String",
                 "$Nullable": "False",
-                "$MaxLength": "255"
+                "$MaxLength": 255
             },           
             "address": {
                 "$Type": "OData.PetStore.Address",
@@ -65,22 +65,22 @@
             "street": {
                 "$Type": "Edm.String",
                 "$Nullable":"false",
-                "$MaxLength": "255"
+                "$MaxLength": 255
             },
             "city": {
                 "$Type": "Edm.String",
                 "$Nullable":"false",
-                "$MaxLength": "255"
+                "$MaxLength": 255
             },
             "state": {
                 "$Type": "Edm.String",
                 "$Nullable":"false",
-                "$MaxLength": "255"
+                "$MaxLength": 255
             },
             "zip": {
                 "$Type": "Edm.String",
                 "$Nullable":"false",
-                "$MaxLength": "255"
+                "$MaxLength": 255
             }
         },
         "Category": {
@@ -95,7 +95,7 @@
             "name": {
                 "$Type": "Edm.String",
                 "$Nullable":"false",
-                "$MaxLength": "255"
+                "$MaxLength": 255
             }
         },
         "Tag": {
@@ -110,7 +110,7 @@
             "name": {
                 "$Type": "Edm.String",
                 "$Nullable":"false",
-                "$MaxLength": "255"
+                "$MaxLength": 255
             }
         },
         "Inventory": {
@@ -118,7 +118,7 @@
             "animal": {
                 "$Type": "Edm.String",
                 "$Nullable":"false",
-                "$MaxLength": "255"
+                "$MaxLength": 255
             },
             "quantity": {
                 "$Type": "Edm.Int64",
@@ -137,20 +137,20 @@
             "name": {
                 "$Type": "Edm.String",
                 "$Nullable": "False",
-                "$MaxLength":"255"
+                "$MaxLength":255
             },
             "category": {
-                "$Type": "OData.PetStore.category",
+                "$Type": "OData.PetStore.Category",
                 "$Nullable": "False"
             },
             "photoUrls": {
                 "$Type": "Edm.String",
                 "$Collection": true,
                 "$Nullable": "False",
-                "$MaxLength":"255"
+                "$MaxLength":255
             },
             "tags": {
-                "$Type": "OData.PetStore.tags",
+                "$Type": "OData.PetStore.Tag",
                 "$Collection": true,
                 "$Nullable": "False"
             },
@@ -180,28 +180,29 @@
         "Container": {
             "$Kind": "EntityContainer",
             "Pets": {
-                "$Kind": "EntitySet",
+                "$Collection": true,
                 "$Type": "OData.PetStore.Pet"
             },
             "Orders": {
-                "$Kind": "EntitySet",
+                "$Collection": true,
                 "$Type": "OData.PetStore.Order"
             },
             "Customers": {
-                "$Kind": "EntitySet",
+                "$Collection": true,
                 "$Type": "OData.PetStore.Customer"
             },
-            "Inventory": {
-                "$Kind": "EntitySet",
-                "$Type": "OData.PetStore.Inventory"
-            },
-            "Tag": {
-                "$Kind": "EntitySet",
+
+            "Tags": {
+                "$Collection": true,
                 "$Type": "OData.PetStore.Tag"
             },
-            "Category": {
-                "$Kind": "EntitySet",
+            "Categories": {
+                "$Collection": true,
                 "$Type": "OData.PetStore.Category"
+            },
+            "Inventory": {
+                "$Collection": true,
+                "$Type": "OData.PetStore.Inventory"
             }
         }
     }
