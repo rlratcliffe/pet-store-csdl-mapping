@@ -57,6 +57,9 @@
         <Property Name="animal" Type="Edm.String" Nullable="false" MaxLength="255" />
         <Property Name="quantity" Type="Edm.Int64" Nullable="false" />
       </ComplexType>
+      <Function Name="getInventory">
+        <ReturnType Type="Collection(OData.PetStore.Inventory)" />
+      </Function>
       <EnumType Name="orderStatus" IsFlags="false" UnderlyingType="Edm.Int32">
         <Member Name="placed" Value="0" />
         <Member Name="approved" Value="1" />
@@ -74,8 +77,7 @@
         <EntitySet Name="Customers" EntityType="OData.PetStore.Customer" />
         <EntitySet Name="Tags" EntityType="OData.PetStore.Tag" />
         <EntitySet Name="Categories" EntityType="OData.PetStore.Category" />
-        <EntitySet Name="Inventory" EntityType="OData.PetStore.Inventory"/>
-
+        <FunctionImport Name="Inventory" Function="OData.PetStore.getInventory" />
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

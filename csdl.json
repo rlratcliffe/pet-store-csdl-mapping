@@ -159,6 +159,15 @@
                 "$Nullable":false
             }
         },
+        "getInventory": [
+            {
+                "$Kind": "Function",
+                "$ReturnType": {
+                    "$Collection": true,
+                    "$Type": "OData.PetStore.Inventory"
+                }
+            }
+        ],
         "orderStatus": {
             "$Kind": "EnumType",
             "$IsFlags": false,
@@ -202,7 +211,7 @@
             },
             "Inventory": {
                 "$Collection": true,
-                "$Type": "OData.PetStore.Inventory"
+                "$Function": "OData.PetStore.getInventory"
             }
         }
     }
