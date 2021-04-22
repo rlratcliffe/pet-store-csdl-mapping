@@ -2,6 +2,7 @@
     "$Version": "4.01",
     "$EntityContainer": "OData.PetStore.Container",
     "OData.PetStore": {
+        "$Alias": "self",
         "Pet": {
             "$Kind": "EntityType",
             "$Key": [
@@ -17,7 +18,7 @@
                 "$MaxLength":255
             },
             "category": {
-                "$Type": "OData.PetStore.Category",
+                "$Type": "self.Category",
                 "$Nullable": false
             },
             "photoUrls": {
@@ -27,12 +28,12 @@
                 "$MaxLength":255
             },
             "tags": {
-                "$Type": "OData.PetStore.Tag",
+                "$Type": "self.Tag",
                 "$Collection": true,
                 "$Nullable": false
             },
             "status": {
-                "$Type": "OData.PetStore.petStatus",
+                "$Type": "self.petStatus",
                 "$Nullable": false
             }
         },
@@ -61,7 +62,7 @@
                 "$Type": "Edm.DateTimeOffset"
             },
             "status": {
-                "$Type": "OData.PetStore.orderStatus"
+                "$Type": "self.orderStatus"
             },
             "price": {
                 "$Type": "Edm.Double",
@@ -89,7 +90,7 @@
                 "$MaxLength": 255
             },           
             "address": {
-                "$Type": "OData.PetStore.Address",
+                "$Type": "self.Address",
                 "$Nullable": false,
                 "$Collection": true
             } 
@@ -164,7 +165,7 @@
                 "$Kind": "Function",
                 "$ReturnType": {
                     "$Collection": true,
-                    "$Type": "OData.PetStore.Inventory"
+                    "$Type": "self.Inventory"
                 }
             }
         ],
@@ -176,7 +177,7 @@
             "approved": "1",
             "delivered": "2",
             "completed": "3",
-            "$Nullable": "False"
+            "$Nullable": false
         },
         "petStatus": {
             "$Kind": "EnumType",
@@ -190,28 +191,27 @@
             "$Kind": "EntityContainer",
             "Pets": {
                 "$Collection": true,
-                "$Type": "OData.PetStore.Pet"
+                "$Type": "self.Pet"
             },
             "Orders": {
                 "$Collection": true,
-                "$Type": "OData.PetStore.Order"
+                "$Type": "self.Order"
             },
             "Customers": {
                 "$Collection": true,
-                "$Type": "OData.PetStore.Customer"
+                "$Type": "self.Customer"
             },
-
             "Tags": {
                 "$Collection": true,
-                "$Type": "OData.PetStore.Tag"
+                "$Type": "self.Tag"
             },
             "Categories": {
                 "$Collection": true,
-                "$Type": "OData.PetStore.Category"
+                "$Type": "self.Category"
             },
             "Inventory": {
                 "$Collection": true,
-                "$Function": "OData.PetStore.getInventory"
+                "$Function": "self.getInventory"
             }
         }
     }

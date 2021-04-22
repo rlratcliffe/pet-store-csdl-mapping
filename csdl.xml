@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="OData.PetStore">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="OData.PetStore" Alias = "self">
       <EntityType Name="Pet">
         <Key>
           <PropertyRef Name="id" />
         </Key>
         <Property Name="id" Type="Edm.Int64" Nullable="false"/>
         <Property Name="name" Type="Edm.String" MaxLength="255" Nullable="false" />
-        <Property Name="category" Type="OData.PetStore.Category" Nullable="false" />
-        <Property Name="tags" Type="Collection(OData.PetStore.Tag)" Nullable="false" />
+        <Property Name="category" Type="self.Category" Nullable="false" />
+        <Property Name="tags" Type="Collection(self.Tag)" Nullable="false" />
         <Property Name="photoUrls" Type="Collection(Edm.String)" Nullable="false" MaxLength="255" />
-        <Property Name="petStatus" Type="OData.PetStore.petStatus" Nullable="false" />
+        <Property Name="petStatus" Type="self.petStatus" Nullable="false" />
       </EntityType>
       <EntityType Name="Order">
         <Key>
@@ -22,7 +22,7 @@
         <Property Name="customerId" Type="Edm.Int64" Nullable="false" />
         <Property Name="shipDate" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="price" Type="Edm.Double" />
-        <Property Name="status" Type="OData.PetStore.orderStatus" />
+        <Property Name="status" Type="self.orderStatus" />
       </EntityType>
       <EntityType Name="Customer">
         <Key>
@@ -31,7 +31,7 @@
         <Property Name="id" Type="Edm.Int64" Nullable="false" />
         <Property Name="firstName" Type="Edm.String" Nullable="false" MaxLength="255" />
         <Property Name="lastName" Type="Edm.String" Nullable="false" MaxLength="255" />
-        <Property Name="address" Type="OData.PetStore.address" Nullable="false" />
+        <Property Name="address" Type="self.address" Nullable="false" />
       </EntityType>
       <ComplexType Name="address">
         <Property Name="street" Type="Edm.String" MaxLength="255" Nullable="false" />
@@ -58,7 +58,7 @@
         <Property Name="quantity" Type="Edm.Int64" Nullable="false" />
       </ComplexType>
       <Function Name="getInventory">
-        <ReturnType Type="Collection(OData.PetStore.Inventory)" />
+        <ReturnType Type="Collection(self.Inventory)" />
       </Function>
       <EnumType Name="orderStatus" IsFlags="false" UnderlyingType="Edm.Int32">
         <Member Name="placed" Value="0" />
@@ -72,12 +72,12 @@
         <Member Name="sold" Value="2" />
       </EnumType>
       <EntityContainer Name="Container">
-        <EntitySet Name="Pets" EntityType="OData.PetStore.Pet" />
-        <EntitySet Name="Orders" EntityType="OData.PetStore.Order" />
-        <EntitySet Name="Customers" EntityType="OData.PetStore.Customer" />
-        <EntitySet Name="Tags" EntityType="OData.PetStore.Tag" />
-        <EntitySet Name="Categories" EntityType="OData.PetStore.Category" />
-        <FunctionImport Name="Inventory" Function="OData.PetStore.getInventory" />
+        <EntitySet Name="Pets" EntityType="self.Pet" />
+        <EntitySet Name="Orders" EntityType="self.Order" />
+        <EntitySet Name="Customers" EntityType="self.Customer" />
+        <EntitySet Name="Tags" EntityType="self.Tag" />
+        <EntitySet Name="Categories" EntityType="self.Category" />
+        <FunctionImport Name="Inventory" Function="self.getInventory" />
       </EntityContainer>
     </Schema>
   </edmx:DataServices>
