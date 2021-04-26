@@ -1,5 +1,7 @@
 csdl.xml - The mapped csdl, in XML
+
 csdl.json - The mapped csdl, in JSON
+
 originalOAS.yaml - The original OAS we ampped off of
 
 Notes:
