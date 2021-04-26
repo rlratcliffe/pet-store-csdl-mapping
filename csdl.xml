@@ -31,7 +31,7 @@
         <Property Name="id" Type="Edm.Int64" Nullable="false" />
         <Property Name="firstName" Type="Edm.String" Nullable="false" MaxLength="255" />
         <Property Name="lastName" Type="Edm.String" Nullable="false" MaxLength="255" />
-        <Property Name="address" Type="self.address" Nullable="false" />
+        <Property Name="address" Type="Collection(self.address)" Nullable="false" />
       </EntityType>
       <ComplexType Name="address">
         <Property Name="street" Type="Edm.String" MaxLength="255" Nullable="false" />

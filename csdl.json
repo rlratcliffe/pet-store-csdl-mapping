@@ -210,7 +210,6 @@
                 "$Type": "self.Category"
             },
             "Inventory": {
-                "$Collection": true,
                 "$Function": "self.getInventory"
             }
         }
